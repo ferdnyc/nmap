@@ -327,7 +327,7 @@ class NmapCommand(object):
                 # This name is used before Python 2.6.5.
                 startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
-        self.command_process = subprocess.Popen(command_list, bufsize=1,
+        self.command_process = subprocess.Popen(command_list,
                                      stdin=subprocess.PIPE,
                                      stdout=f,
                                      stderr=stderr,
