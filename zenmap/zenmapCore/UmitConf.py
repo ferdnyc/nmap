@@ -286,7 +286,7 @@ class Profile(UmitConfigParser, object):
         overwritten, and the method returns immediately. The backing file for
         the profiles is automatically updated."""
 
-        log.debug(">>> Add Profile '%s': %s" % (profile_name, attributes))
+        log.debug(">>> Add Profile '%s': %s", profile_name, attributes)
 
         try:
             self.add_section(profile_name)
@@ -495,7 +495,7 @@ class NmapOutputHighlight(object):
 
         Sequence: [bold, italic, underline, text, highlight, regex]
         """
-        # log.debug(">>> Sanitize %s" % str(settings))
+        # log.debug(">>> Sanitize %s", str(settings))
 
         settings[0] = self.boolean_sanity(settings[0])
         settings[1] = self.boolean_sanity(settings[1])
@@ -673,7 +673,7 @@ class PathsConfig(object):
             return config_parser.get(self.section_name, p_name)
         except (NoOptionError, NoSectionError):
             log.debug(
-                    ">>> Using default \"%s\" for \"%s\"." % (default, p_name))
+                    '>>> Using default "%s" for "%s".', default, p_name)
             return default
 
     def __set_it(self, property_name, settings):

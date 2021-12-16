@@ -195,7 +195,7 @@ class NdiffCommand(subprocess.Popen):
                 suffix=".xml"
                 )
 
-        log.debug("Running command: %s" % repr(command_list))
+        log.debug("Running command: %s", repr(command_list))
         # shell argument explained in zenmapCore.NmapCommand.py
         subprocess.Popen.__init__(
                 self,
@@ -216,7 +216,7 @@ class NdiffCommand(subprocess.Popen):
         """Clean up temporary files."""
         self.stdout_file.close()
         for filename in self.temporary_filenames:
-            log.debug("Remove temporary diff file %s." % filename)
+            log.debug("Remove temporary diff file %s.", filename)
             os.remove(filename)
         self.temporary_filenames = []
 

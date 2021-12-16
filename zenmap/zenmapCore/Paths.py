@@ -259,7 +259,7 @@ def create_user_config_dir(user_dir, template_dir):
     necessary, then copying all the files from the given template directory,
     skipping any that already exist."""
     from zenmapCore.UmitLogging import log
-    log.debug(">>> Create user dir at %s" % user_dir)
+    log.debug(">>> Create user dir at %s",user_dir)
     create_dir(user_dir)
 
     for filename in os.listdir(template_dir):
@@ -270,10 +270,10 @@ def create_user_config_dir(user_dir, template_dir):
             continue
         # Don't overwrite existing files.
         if os.path.exists(user_filename):
-            log.debug(">>> %s already exists." % user_filename)
+            log.debug(">>> %s already exists.", user_filename)
             continue
         shutil.copyfile(template_filename, user_filename)
-        log.debug(">>> Copy %s to %s." % (template_filename, user_filename))
+        log.debug(">>> Copy %s to %s.", template_filename, user_filename)
 
 
 def return_if_exists(path, create=False):

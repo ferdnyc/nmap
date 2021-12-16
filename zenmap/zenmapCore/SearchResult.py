@@ -272,22 +272,22 @@ class SearchResult(object):
                 self.parsed_scan.__getattribute__(property)).lower()
 
     def match_keyword(self, keyword):
-        log.debug("Match keyword: %s" % keyword)
+        log.debug("Match keyword: %s", keyword)
 
         return self.basic_match(keyword, "nmap_output") or \
                self.match_profile(keyword) or \
                self.match_target(keyword)
 
     def match_profile(self, profile):
-        log.debug("Match profile: %s" % profile)
-        log.debug("Comparing: %s == %s ??" % (
+        log.debug("Match profile: %s", profile)
+        log.debug("Comparing: %s == %s ??",
             str(self.parsed_scan.profile_name).lower(),
-            "*%s*" % profile.lower()))
+            "*%s*" % profile.lower())
         return (profile == "*" or profile == "" or
                 profile.lower() in str(self.parsed_scan.profile_name).lower())
 
     def match_option(self, option):
-        log.debug("Match option: %s" % option)
+        log.debug("Match option: %s", option)
 
         if option == "*" or option == "":
             return True
@@ -356,7 +356,7 @@ class SearchResult(object):
         return self.match_date(date_arg, operator="before")
 
     def match_target(self, target):
-        log.debug("Match target: %s" % target)
+        log.debug("Match target: %s", target)
 
         for spec in self.parsed_scan.get_targets():
             if target in spec:
@@ -419,7 +419,7 @@ class SearchResult(object):
             return True
 
     def match_port(self, ports, port_state):
-        log.debug("Match port:%s" % ports)
+        log.debug("Match port:%s", ports)
 
         # Transform a comma-delimited string containing ports into a list
         ports = [not_empty for not_empty in ports.split(",") if not_empty]
@@ -504,8 +504,8 @@ class SearchDB(SearchResult, object):
         u = UmitDB()
 
         for scan in u.get_scans():
-            log.debug(">>> Retrieving result of scans_id %s" % scan.scans_id)
-            log.debug(">>> Nmap xml output: %s" % scan.nmap_xml_output)
+            log.debug(">>> Retrieving result of scans_id %s", scan.scans_id)
+            log.debug(">>> Nmap xml output: %s", scan.nmap_xml_output)
 
             try:
                 buffer = io.StringIO(scan.nmap_xml_output)
@@ -513,8 +513,9 @@ class SearchDB(SearchResult, object):
                 parsed.parse(buffer)
                 buffer.close()
             except Exception as e:
-                log.warning(">>> Error loading scan with ID %u from database: "
-                        "%s" % (scan.scans_id, str(e)))
+                log.warning(
+                    ">>> Error loading scan with ID %u from database: %s",
+                    scan.scans_id, str(e))
             else:
                 self.scan_results.append(parsed)
 
@@ -542,9 +543,9 @@ class SearchDir(SearchResult, object):
         for ext in self.file_extensions:
             files += glob(os.path.join(self.search_directory, "*.%s" % ext))
 
-        log.debug(">>> Scan results at selected directory: %s" % files)
+        log.debug(">>> Scan results at selected directory: %s", files)
         for scan_file in files:
-            log.debug(">>> Retrieving scan result %s" % scan_file)
+            log.debug(">>> Retrieving scan result %s", scan_file)
             if os.access(scan_file, os.R_OK) and os.path.isfile(scan_file):
 
                 try:

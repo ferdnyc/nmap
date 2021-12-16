@@ -261,12 +261,12 @@ class UmitDB(object):
 
     def cleanup(self, save_time):
         log.debug(">>> Cleaning up data base.")
-        log.debug(">>> Removing results older than %s seconds" % save_time)
+        log.debug(">>> Removing results older than %s seconds", save_time)
         self.cursor.execute("SELECT scans_id FROM scans WHERE date < ?",
                 (time() - save_time,))
 
         for sid in [sid[0] for sid in self.cursor.fetchall()]:
-            log.debug(">>> Removing results with scans_id %s" % sid)
+            log.debug(">>> Removing results with scans_id %s", sid)
             self.cursor.execute("DELETE FROM scans WHERE scans_id = ?",
                     (sid, ))
 

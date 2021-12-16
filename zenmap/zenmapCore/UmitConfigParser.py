@@ -145,7 +145,7 @@ class UmitConfigParser(ConfigParser):
         self.save_changes()
 
     def read(self, filename):
-        log.debug(">>> Trying to parse: %s" % filename)
+        log.debug(">>> Trying to parse: %s", filename)
 
         if ConfigParser.read(self, filename):
             self.filenames = filename
@@ -154,12 +154,12 @@ class UmitConfigParser(ConfigParser):
 
     def save_changes(self):
         if self.filenames:
-            log.debug("saving to %s" % self.filenames)
+            log.debug("saving to %s", self.filenames)
             try:
                 fp = open(self.filenames, 'w')
             except Exception as e:
                 self.failed = e
-                log.error(">>> Can't save to %s: %s" % (self.filenames, e))
+                log.error(">>> Can't save to %s: %s", self.filenames, e)
                 return
             self.write(fp)
             self.failed = False

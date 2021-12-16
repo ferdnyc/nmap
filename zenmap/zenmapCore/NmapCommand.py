@@ -258,7 +258,7 @@ class NmapCommand(object):
         """Kill the nmap subprocess."""
         from time import sleep
 
-        log.debug(">>> Killing scan process %s" % self.command_process.pid)
+        log.debug(">>> Killing scan process %s", self.command_process.pid)
 
         if sys.platform != "win32":
             try:
@@ -311,10 +311,10 @@ class NmapCommand(object):
         search_paths = self.get_path()
         env = dict(os.environ)
         env["PATH"] = search_paths
-        log.debug("PATH=%s" % env["PATH"])
+        log.debug("PATH=%s", env["PATH"])
 
         command_list = self.ops.render()
-        log.debug("Running command: %s" % repr(command_list))
+        log.debug("Running command: %s", repr(command_list))
 
         startupinfo = None
         if sys.platform == "win32":
@@ -351,9 +351,9 @@ class NmapCommand(object):
             return False  # False means that the process had a successful exit
         else:
             log.warning("An error occurred during the scan execution!")
-            log.warning("Command that raised the exception: '%s'" %
+            log.warning("Command that raised the exception: '%s'",
                     self.ops.render_string())
-            log.warning("Scan output:\n%s" % self.get_output())
+            log.warning("Scan output:\n%s", self.get_output())
 
             raise Exception(
                     "An error occurred during the scan execution!\n\n'%s'" %
