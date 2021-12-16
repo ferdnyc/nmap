@@ -377,10 +377,10 @@ class HostDetails(HIGVBox):
             self.os_expander.set_expanded(True)
             table, hbox = self.create_table_hbox()
             progress = Gtk.ProgressBar()
+            progress.set_show_text(True)
 
             if 'accuracy' in os:
                 progress.set_fraction(float(os['accuracy']) / 100.0)
-                progress.set_text(os['accuracy'] + '%')
             else:
                 progress.set_text(_('Not Available'))
 
@@ -446,7 +446,7 @@ class HostDetails(HIGVBox):
                 table.attach(HIGEntryLabel(o['osgen']), 3, 4, y1, y2)
 
                 progress = Gtk.ProgressBar()
-                progress.set_text(o['accuracy'] + '%')
+                progress.set_show_text(True)
                 progress.set_fraction(float(o['accuracy']) / 100.0)
                 table.attach(progress, 4, 5, y1, y2)
                 y1 += 1
