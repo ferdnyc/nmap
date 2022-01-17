@@ -144,7 +144,7 @@ class HIGFrame(Gtk.Frame):
     Frame without border with bold label.
     """
     def __init__(self, label=None):
-        Gtk.Frame.__init__(self)
+        super().__init__()
 
         self.set_shadow_type(Gtk.ShadowType.NONE)
         self._flabel = Gtk.Label()

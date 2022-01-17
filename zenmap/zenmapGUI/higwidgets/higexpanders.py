@@ -143,7 +143,7 @@ from .higboxes import HIGHBox, hig_box_space_holder
 
 class HIGExpander(Gtk.Expander):
     def __init__(self, label):
-        Gtk.Expander.__init__(self)
+        super().__init__()
 
         self.set_use_markup(True)
         self.set_label(label)

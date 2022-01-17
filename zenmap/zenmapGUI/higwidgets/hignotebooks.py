@@ -136,7 +136,7 @@ from .higbuttons import HIGButton
 
 class HIGNotebook(Gtk.Notebook):
     def __init__(self):
-        Gtk.Notebook.__init__(self)
+        super().__init__()
         self.popup_enable()
 
 
@@ -146,8 +146,8 @@ class HIGClosableTabLabel(HIGHBox):
             }
 
     def __init__(self, label_text=""):
-        GObject.GObject.__init__(self)
-        #HIGHBox.__init__(self, spacing=4)
+        super().__init__()
+        #super().__init__(spacing=4)
 
         self.label_text = label_text
         self.__create_widgets()

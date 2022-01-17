@@ -141,6 +141,6 @@ from gi.repository import Gtk
 
 class HIGTextView(Gtk.TextView):
     def __init__(self, text=''):
-        Gtk.TextView.__init__(self)
+        super().__init__()
         self.set_wrap_mode(Gtk.WrapMode.WORD)
         self.get_buffer().set_text(text)

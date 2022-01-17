@@ -151,7 +151,7 @@ class HIGLoginDialog(HIGDialog):
     def __init__(self, title='Login',
                  buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                           Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)):
-        HIGDialog.__init__(self, title, buttons=buttons)
+        super().__init__(title, buttons=buttons)
 
         self.username_label = HIGEntryLabel("Username:")
         self.username_entry = HIGTextEntry()

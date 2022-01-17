@@ -146,7 +146,7 @@ class HIGSectionLabel(Gtk.Label):
     Bold label, used to define sections
     """
     def __init__(self, text=None):
-        Gtk.Label.__init__(self)
+        super().__init__()
         if text:
             self.set_markup("<b>%s</b>" % (text))
             self.set_justify(Gtk.Justification.LEFT)
@@ -161,7 +161,7 @@ class HIGHintSectionLabel(Gtk.Box, object):
     when mouse is over it.
     """
     def __init__(self, text=None, hint=None):
-        Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL)
+        super().__init__(orientation=Gtk.Orientation.HORIZONTAL)
 
         self.label = HIGSectionLabel(text)
         self.hint = Hint(hint)
@@ -172,7 +172,7 @@ class HIGHintSectionLabel(Gtk.Box, object):
 
 class Hint(Gtk.EventBox, object):
     def __init__(self, hint):
-        Gtk.EventBox.__init__(self)
+        super().__init__()
         self.hint = hint
 
         self.hint_image = Gtk.Image()
@@ -190,7 +190,7 @@ class Hint(Gtk.EventBox, object):
 
 class HintWindow(Gtk.Window):
     def __init__(self, hint):
-        Gtk.Window.__init__(self, type=Gtk.WindowType.POPUP)
+        super().__init__(type=Gtk.WindowType.POPUP)
         self.set_position(Gtk.WindowPosition.MOUSE)
         self.set_resizable(False)
 
@@ -222,7 +222,7 @@ class HIGEntryLabel(Gtk.Label):
     Simple label, like the ones used to label entries
     """
     def __init__(self, text=None):
-        Gtk.Label.__init__(self, label=text)
+        super().__init__(label=text)
         self.set_justify(Gtk.Justification.LEFT)
         self.props.xalign = 0
         self.props.yalign = 0.5
@@ -235,7 +235,7 @@ class HIGDialogLabel(Gtk.Label):
     Centered, line-wrappable label, usually used on dialogs.
     """
     def __init__(self, text=None):
-        Gtk.Label.__init__(self, label=text)
+        super().__init__(self, label=text)
         self.set_justify(Gtk.Justification.CENTER)
         self.set_use_markup(True)
         self.set_line_wrap(True)

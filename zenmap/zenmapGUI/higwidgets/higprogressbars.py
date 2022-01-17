@@ -143,7 +143,7 @@ from .higboxes import HIGHBox
 
 class HIGLabeledProgressBar(HIGHBox):
     def __init__(self, label=None):
-        HIGHBox.__init__(self)
+        super().__init__()
         if label:
             self.label = HIGEntryLabel(label)
             self.pack_label(self.label)

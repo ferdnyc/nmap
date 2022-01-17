@@ -146,5 +146,5 @@ class HIGPasswordEntry(HIGTextEntry):
     An entry that masks its text
     """
     def __init__(self):
-        HIGTextEntry.__init__(self)
+        super().__init__()
         self.set_visibility(False)

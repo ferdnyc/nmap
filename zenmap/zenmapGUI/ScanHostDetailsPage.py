@@ -144,7 +144,7 @@ na = _('Not available')
 
 class ScanHostDetailsPage(HIGExpander):
     def __init__(self, host):
-        HIGExpander.__init__(self, host.get_hostname())
+        super().__init__(host.get_hostname())
 
         self.host_details = HostDetails(host)
         self.hbox._pack_expand_fill(self.host_details)
@@ -152,7 +152,7 @@ class ScanHostDetailsPage(HIGExpander):
 
 class HostDetails(HIGVBox):
     def __init__(self, host):
-        HIGVBox.__init__(self)
+        super().__init__()
 
         self.__create_widgets()
 

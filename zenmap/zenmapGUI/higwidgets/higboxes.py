@@ -154,7 +154,7 @@ class HIGBox(Gtk.Box):
 
 class HIGHBox(HIGBox):
     def __init__(self, homogeneous=False, spacing=12):
-        Gtk.Box.__init__(self, orientation=Gtk.Orientation.HORIZONTAL,
+        super().__init__(orientation=Gtk.Orientation.HORIZONTAL,
                          homogeneous=homogeneous, spacing=spacing)
 
     pack_section_label = HIGBox._pack_noexpand_nofill
@@ -164,7 +164,7 @@ class HIGHBox(HIGBox):
 
 class HIGVBox(HIGBox):
     def __init__(self, homogeneous=False, spacing=12):
-        Gtk.Box.__init__(self, orientation=Gtk.Orientation.VERTICAL,
+        super().__init__(orientation=Gtk.Orientation.VERTICAL,
                          homogeneous=homogeneous, spacing=spacing)
 
     # Packs a widget as a line, so it doesn't expand vertically
@@ -173,7 +173,7 @@ class HIGVBox(HIGBox):
 
 class HIGSpacer(HIGHBox):
     def __init__(self, widget=None):
-        HIGHBox.__init__(self)
+        super().__init__()
         self.set_spacing(6)
 
         self._pack_noexpand_nofill(hig_box_space_holder())

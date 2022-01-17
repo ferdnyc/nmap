@@ -141,6 +141,6 @@ from gi.repository import Gtk
 
 class HIGScrolledWindow(Gtk.ScrolledWindow):
     def __init__(self):
-        Gtk.ScrolledWindow.__init__(self)
+        super().__init__()
         self.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         self.set_border_width(5)

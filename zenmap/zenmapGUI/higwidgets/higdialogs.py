@@ -144,7 +144,7 @@ class HIGDialog(Gtk.Dialog):
     HIGFied Dialog
     """
     def __init__(self, title='', parent=None, flags=0, buttons=()):
-        Gtk.Dialog.__init__(self, title=title, parent=parent, flags=flags)
+        super().__init__(title=title, parent=parent, flags=flags)
         self.set_border_width(5)
         self.vbox.set_border_width(2)
         self.vbox.set_spacing(6)
@@ -169,8 +169,8 @@ class HIGAlertDialog(Gtk.MessageDialog):
                  message_format=None,
                  secondary_text=None):
 
-        Gtk.MessageDialog.__init__(self, parent=parent, flags=flags,
-                                   message_type=type, buttons=buttons)
+        super().__init__(parent=parent, flags=flags,
+                         message_type=type, buttons=buttons)
 
         self.set_resizable(False)
 

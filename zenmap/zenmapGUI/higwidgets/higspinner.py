@@ -337,7 +337,7 @@ class HIGSpinner(Gtk.EventBox):
     #                'size-request': 'override'}
 
     def __init__(self):
-        Gtk.EventBox.__init__(self)
+        super().__init__()
 
         #self.set_events(self.get_events())
 
