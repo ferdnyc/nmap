@@ -230,6 +230,16 @@ class HIGEntryLabel(Gtk.Label):
         self.set_line_wrap(True)
 
 
+class HIGEntryHeading(HIGEntryLabel):
+    """
+    Label derivative usable as a column heading
+    """
+    def __init__(self, text=None):
+        super().__init__(f'<b>{text}</b>')
+        self.props.xalign = 0.5
+        self.set_line_wrap(False)
+
+
 class HIGDialogLabel(Gtk.Label):
     """
     Centered, line-wrappable label, usually used on dialogs.

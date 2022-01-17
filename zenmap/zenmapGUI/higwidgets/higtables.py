@@ -164,3 +164,11 @@ class HIGTable(Gtk.Table):
 
     def attach_entry(self, widget, x0, x, y0, y):
         self.attach(widget, x0, x, y0, y, xoptions=Gtk.AttachOptions.FILL | Gtk.AttachOptions.EXPAND)
+
+
+class HIGGrid(Gtk.Grid):
+    def __init__(self, **kwargs):
+        super().__init__(
+            column_spacing=12,
+            orientation=Gtk.Orientation.VERTICAL,
+            **kwargs)
