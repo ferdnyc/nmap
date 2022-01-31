@@ -156,13 +156,13 @@ class UmitConfigParser(ConfigParser):
         if self.filenames:
             log.debug("saving to %s", self.filenames)
             try:
-                fp = open(self.filenames, 'w')
+                with open(self.filenames, 'w') as fp:
+                    self.write(fp)
+                self.failed = False
             except Exception as e:
                 self.failed = e
                 log.error(">>> Can't save to %s: %s", self.filenames, e)
                 return
-            self.write(fp)
-            self.failed = False
         else:
             log.debug(">>> UmitConfigParser can't save changes: no filename")
 

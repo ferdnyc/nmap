@@ -146,19 +146,17 @@ class TargetList(object):
             self.using_file = True
 
             # Recovering saved targets
-            target_file = open(self.target_list_file, "r")
-            self.temp_list = [
-                    t for t in target_file.read().split(";")
-                    if t != "" and t != "\n"]
-            target_file.close()
+            with open(self.target_list_file, "r") as f:
+                self.temp_list = [
+                        t for t in f.read().split(";")
+                        if t != "" and t != "\n"]
         else:
             self.using_file = False
 
     def save(self):
         if self.using_file:
-            target_file = open(self.target_list_file, "w")
-            target_file.write(";".join(self.temp_list))
-            target_file.close()
+            with open(self.target_list_file, "w") as out:
+                out.write(";".join(self.temp_list))
 
     def add_target(self, target):
         if target in self.temp_list:

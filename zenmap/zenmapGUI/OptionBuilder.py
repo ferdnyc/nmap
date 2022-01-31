@@ -472,10 +472,8 @@ class OptionBuilder(object):
         xml_file is a UI description xml-file
         ops is an NmapOptions instance
         """
-        xml_desc = open(xml_file)
-        self.xml = minidom.parse(xml_desc)
-        # Closing file to avoid problems with file descriptors
-        xml_desc.close()
+        with open(xml_file) as xml_desc:
+            self.xml = minidom.parse(xml_desc)
 
         self.ops = ops
         self.help_buf = help_buf
